@@ -1,0 +1,21 @@
+import {RichTextToolbarButton} from '@wordpress/block-editor';
+import {toggleFormat} from '@wordpress/rich-text';
+import metadata from './block.json';
+
+export const edit = (props) => {
+    const {isActive, onChange, value} = props
+
+    return (<RichTextToolbarButton
+        icon={metadata.icon}
+        title="{{title}}"
+        onClick={() => {
+            onChange(
+                toggleFormat(value, {
+                    type: metadata.name,
+                })
+            );
+        }}
+        isActive={isActive}
+    />);
+};
+
